@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>功能DEMO展示</title>
+    <script type="text/javascript" src="/main/static/js/demo.js?v=008"></script>
+    <style>
+        .pure-table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            empty-cells: show;
+            border: 1px solid #cbcbcb;
+            table-layer: fixed;
+            min-width: 980px;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .pure-table caption {
+            color: #000;
+            font: italic 85%/1 arial, sans-serif;
+            padding: 1em 0;
+            text-align: center;
+        }
+
+        .pure-table td, .pure-table th {
+            border-left: 1px solid #cbcbcb;
+            border-width: 0 0 0 1px;
+            font-size: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: .5em 1em;
+        }
+
+        .pure-table thead {
+            background-color: #e0e0e0;
+            color: #000;
+            text-align: left;
+            vertical-align: bottom;
+        }
+
+        .pure-table td {
+            background-color: transparent;
+        }
+
+        .pure-table-bordered td {
+            border-bottom: 1px solid #cbcbcb;
+        }
+
+        .pure-table-bordered tbody > tr:last-child > td {
+            border-bottom-width: 0;
+        }
+
+        .background {
+            display: block;
+            width: 100%;
+            height: 100%;
+            opacity: 0.4;
+            filter: alpha(opacity=40);
+            background: #5a5d64;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2000;
+        }
+
+        .progressBar {
+            border: solid 2px #86A5AD;
+            background: white no-repeat 10px 10px;
+        }
+
+        .progressBar {
+            display: block;
+            width: 500px;
+            height: 100px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            padding: 10px 10px 10px 50px;
+            text-align: left;
+            line-height: 27px;
+            font-weight: bold;
+            position: absolute;
+            z-index: 2001;
+        }
+
+    </style>
+</head>
+
+<body>
+<div id="background" class="background" style="display:none; "></div>
+<div id="progressBar" class="progressBar" style="display:none">
+    <img src="/main/static/img/loading.gif" height="100%">
+    数据识别中，请稍等...
+</div>
+<!--  表单区 -->
+<div class="container">
+    <div class="card" align="center">
+        <div class="card-body form-horizontal" align="left">
+            <form>
+                <div id="toolbar" class="cs-querylist">
+                    <div class="tx-l pdt30">
+                        <input type="button" class="form-control btn btn-primary" value="识别" id="submit_ocr"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container" align="center">
+    <h3 class="title" id="result_title">功能DEMO展示</h3>
+    <div align="center">
+        <img id="orgin_image" width="80%">
+    </div>
+
+    <div class="main-show-text">
+    </div>
+    {# style="display: none"#}
+    <div id="show_output">
+        <div align="center">
+            <img id="idcard_image" width="80%">
+        </div>
+        <div align="center" class="fixed-table-container">
+            <table id="table" border="1" class="pure-table pure-table-bordered">
+                <thead>
+                <tr>
+                    <th width="30%">字段名</th>
+                    <th width="70%">字段值</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<div>
+    <br><br>
+</div>
+</body>
+
+</html>

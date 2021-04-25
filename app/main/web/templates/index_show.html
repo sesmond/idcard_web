@@ -1,0 +1,155 @@
+<html>
+<head>
+    <title>首页-main</title>
+    <meta charset="utf-8">
+    <script>
+
+
+    </script>
+</head>
+<body>
+<div class="jumbotron masthead">
+    <div class="container">
+        <h1>sandbox</h1>
+        <h2>AI技术团队sandbox</h2>
+    </div>
+</div>
+
+<div class="container container-panel">
+
+    <div class="card">
+        <div class="card-header">
+            <i class="fa fa-database" aria-hidden="true"></i> 基础服务
+        </div>
+
+        <ul class="list-group list-group-flush">
+           <li class="list-group-item alert-primary" role="alert" align="center">
+                <a href="#" onclick="load_main('case.compare')">通用正确率测试</a>
+            </li>
+              <li class="list-group-item alert-primary" role="alert" align="center">
+                <a href="#" onclick="load_main('case.diff')">用例详情比较</a>
+            </li>
+             <li class="list-group-item alert-primary" role="alert" align="center">
+                <a href="#" onclick="load_main('demo.query')">Demo结果监控</a>
+            </li>
+             <li class="list-group-item alert-primary" role="alert" align="center">
+                <a href="#" onclick="load_main('idcard.generate')">身份证生成</a>
+            </li>
+        </ul>
+
+    </div>
+</div>
+
+<div class="container container-panel">
+    <div class="card">
+        <div class="card-header">
+            <i class="fa fa-file-text-o" aria-hidden="true"></i> 批量正确率测试
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item alert alert-primary" role="alert" align="center">
+                <a href="#" onclick="load_case('jsz')">驾驶证测试</a>
+            </li>
+
+            <li class="list-group-item alert alert-primary" role="alert" align="center">
+                <a href="#" onclick="load_case('vrc')">机动车登记证测试</a>
+            </li>
+            <li class="list-group-item alert alert-primary" role="alert" align="center">
+                <a href="#" onclick="load_case('vrc.34')">机动车登记证34页测试</a>
+            </li>
+
+             <li class="list-group-item alert alert-primary" role="alert" align="center">
+                <a href="#" onclick="load_case('ivc')">发票测试</a>
+            </li>
+             <li class="list-group-item alert alert-primary" role="alert" align="center">
+                <a href="#" onclick="load_case('sali')">交强险测试</a>
+            </li>
+             <li class="list-group-item alert alert-primary" role="alert" align="center">
+                <a href="#" onclick="load_case('idcard')">身份证自测试</a>
+            </li>
+             <li class="list-group-item alert alert-primary" role="alert" align="center">
+                <a href="#" onclick="load_case('jsz')">驾驶证自测试</a>
+            </li>
+             <li class="list-group-item alert alert-primary" role="alert" align="center">
+                <a href="#" onclick="load_case('xsz')">行驶证自测试</a>
+            </li>
+            <li class="list-group-item alert alert-primary" role="alert" align="center">
+                <a href="#" onclick="load_case('v_contract')">合同验证</a>
+            </li>
+            <li class="list-group-item alert alert-primary" role="alert" align="center">
+                <a href="#" onclick="load_case('license_validation')">驾驶证格式验证</a>
+            </li>
+
+            <li class="list-group-item alert alert-primary" role="alert" align="center">
+                <a href="#" onclick="load_case('plate_barcode')">车牌条码识别正确率</a>
+            </li>
+            <li class="list-group-item alert alert-primary" role="alert" align="center">
+                <a href="#" onclick="load_case('crnn')">crnn识别正确率</a>
+            </li>
+            <li class="list-group-item alert alert-primary" role="alert" align="center">
+                <a href="#" onclick="load_case('psenet')">文本检测识别正确率</a>
+            </li>
+            <li class="list-group-item alert alert-primary" role="alert" align="center">
+                <a href="#" onclick="load_case('plate_ocr')">车牌识别正确率</a>
+            </li>
+
+        </ul>
+    </div>
+
+</div>
+
+
+<div class="container container-panel">
+    <div class="card">
+        <div class="card-header">
+            <i class="fa fa-file-text-o" aria-hidden="true"></i> 功能展示DEMO
+        </div>
+        <ul class="list-group list-group-flush">
+
+            <li class="list-group-item alert alert-primary" role="alert" align="center">
+                <a href="#" onclick="load_demo('idcard','demo')">身份证识别</a>
+            </li>
+
+            <li class="list-group-item alert alert-primary" role="alert" align="center">
+                <a href="#" onclick="load_demo('jsz','demo')">驾驶证识别</a>
+            </li>
+
+            <li class="list-group-item alert alert-primary" role="alert" align="center">
+                <a href="#" onclick="load_demo('xsz','demo')">行驶本识别</a>
+            </li>
+
+            <li class="list-group-item alert alert-primary" role="alert" align="center">
+                <a href="#" onclick="load_demo('vrc','demo')">机动车登记证识别（绿本）</a>
+            </li>
+
+            <li class="list-group-item alert alert-primary" role="alert" align="center">
+                <a href="#" onclick="load_demo('sali','demo')">交强险保单识别</a>
+            </li>
+
+            <li class="list-group-item alert alert-primary" role="alert" align="center">
+                <a href="#" onclick="load_demo('handwriting','demo')">手写体识别</a>
+            </li>
+
+            <li class="list-group-item alert alert-primary" role="alert" align="center">
+                <a href="#" onclick="load_demo('v_contract','demo')">合同签名确认</a>
+            </li>
+
+            <li class="list-group-item alert alert-primary" role="alert" align="center">
+                <a href="#" onclick="load_demo('plate_barcode','demo')">二维码&车牌识别</a>
+            </li>
+
+            <li class="list-group-item alert alert-primary" role="alert" align="center">
+                <a href="#" onclick="load_demo('license_validation','demo')">驾照格式校验</a>
+            </li>
+             <li class="list-group-item alert alert-primary" role="alert" align="center">
+                <a href="#" onclick="load_demo('ivc')">发票识别</a>
+            </li>
+
+        </ul>
+    </div>
+
+</div>
+
+</body>
+
+
+</html>

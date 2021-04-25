@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="/main/static/lib/jquery.min.js"></script>
+
+    <title>图像识别OCR</title>
+    <script>
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r != null) return unescape(r[2]);
+            return null; //返回参数值
+        }
+
+        function load_origin_image(base64_img) {
+            $("#orgin_image").attr("src", "data:image/jpg;base64," + base64_img)
+        }
+
+        function load_ocr(result) {
+            $("#ocr_output").show()
+            var debug_info = result.debug_info
+            load_origin_image(debug_info.image)
+            var $table = $("#small_table");
+            var small_images = debug_info['small_images']
+            var probs = debug_info['probs']
+
+            small_images.forEach(function (e, i, array) {
+                var $tr =
+                    '<tr>' +
+                    '   <td align="left"><img style="min-height:20px;max-width:95%" src="data:image/jpg;base64,' + e + '"></td>' +
+                    '   <td>' + debug_info['text'][i] + '</td>' +
+                    // + '<td>' + debug_info['text_corrected'][i] + '</td>'
+                    +'</tr>'
+                $table.append($tr)
+            });
+        }
+
+        function syntaxHighlight(json) {
+            if (typeof json != 'string') {
+                json = JSON.stringify(json, undefined, 2);
+            }
+            json = json.replace(/&/g, '&').replace(/</g, '<').replace(/>/g, '>');
+            return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g,
+                function (match) {
+                    var cls = 'number';
+                    if (/^"/.test(match)) {
+                        if (/:$/.test(match)) {
+                            cls = 'key';
+                        } else {
+                            cls = 'string';
+                        }
+                    } else if (/true|false/.test(match)) {
+                        cls = 'boolean';
+                    } else if (/null/.test(match)) {
+                        cls = 'null';
+                    }
+                    return '<span class="' + cls + '">' + match + '</span>';
+                }
+            );
+        }
+
+        function init_detail(channel, data_type, file_name) {
+            var param = {
+                "data_type": data_type,
+                "file_name": file_name,
+                "channel": channel
+            }
+            $.ajax({
+                url: "/case/ocr/result.ajax",
+                type: 'post',
+                dataType: 'json',
+                contentType: "application/json",
+                data: JSON.stringify(param),
+                success: function (res) {
+                    debugger
+                    {#load_ocr(res)#}
+                    load_show(res)
+                    //展示json
+                    {#delete result['debug_info']#}
+                    delete res['show_info']
+                    $('#result_json').html(syntaxHighlight(res));
+                },
+                error: function (res) {
+                    // 错误时处理逻辑
+                    debugger
+                }
+            });
+        }
+
+        $(function () {
+            debugger
+            var channel = getUrlParam("channel")
+            var data_type = getUrlParam("data_type")
+            var file_name = getUrlParam("file_name")
+            init_detail(channel, data_type, file_name)
+        });
+
+    </script>
+    <style type="text/css">
+        /*接口返回json展示*/
+        pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
+        .string { color: green; }        /*字符串的样式*/
+        .number { color: darkorange; }    /*数字的样式*/
+        .boolean { color: blue; }        /*布尔型数据的样式*/
+        .null { color: magenta; }        /*null值的样式*/
+        .key { color: red; }            /*key值的样式*/
+
+
+        {#  table.diff {
+              font-family: Courier;
+              border: medium;
+          }
+
+          .diff_header {
+              background-color: #e0e0e0
+          }
+
+          td.diff_header {
+              text-align: right
+          }
+
+          .diff_next {
+              background-color: #c0c0c0
+          }
+
+          .diff_add {
+              background-color: #aaffaa
+          }
+
+          .diff_chg {
+              background-color: #ffff77
+          }
+
+          .diff_sub {
+              background-color: #ffaaaa
+          }#}
+    </style>
+</head>
+
+<body>
+
+<div class="container" align="center">
+    <h3 class="title" id="result_title">识别结果</h3>
+    <span align="center" id="request_url"></span>
+    <div align="center">
+        <img id="orgin_image" width="80%">
+    </div>
+</div>
+
+<!-- 小图结果 -->
+<div class="container" id="ocr_output" style="display: none">
+    <div align="center">
+        <table id="small_table" border="1" style="min-width:980px;width:80%;margin: 0 auto;">
+            <tr>
+                <th>检测小图</th>
+                <th>识别结果</th>
+                {#                  <th>矫正后结果</th>#}
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="container" id="show_output" style="display: none">
+    <div align="center">
+        <table id="show_table" border="1" style="min-width:100px;width:80%;margin: 0 auto;">
+        </table>
+    </div>
+</div>
+
+
+<div></div>
+<div class="container">
+    <pre id="result_json">{接口返回结果}</pre>
+</div>
+
+
+</body>
+
+</html>

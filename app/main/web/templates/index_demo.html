@@ -1,0 +1,84 @@
+<html>
+<head>
+    <title>OCR功能DEMO</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/main/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/main/static/css/font-awesome.css">
+    <link rel="stylesheet" href="/main/static/css/style.css">
+    <script type="text/javascript" src="/main/static/lib/jquery.min.js"></script>
+    <script src="/main/static/lib/bootstrap.min.js" 5></script>
+
+    <link rel="stylesheet" href="/main/static/lib/bootstrap-table.min.css">
+    <script src="/main/static/lib/bootstrap-table.min.js"></script>
+    <script src="/main/static/lib/bootstrap-table-zh-CN.min.js"></script>
+    <script type="text/javascript" src="/main/static/js/index.js?v=29"></script>
+</head>
+<body>
+<div align="center">
+    <a href="/">首页</a>
+</div>
+<div class="jumbotron masthead">
+    <div class="container">
+        <h3>图像识别功能DEMO</h3>
+        <h2>AI技术团队</h2>
+    </div>
+</div>
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="container container-panel">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-file-text-o" aria-hidden="true"></i> 功能列表
+                </div>
+                <ul class="list-group list-group-flush">
+
+                    <li class="list-group-item alert alert-primary" role="alert" align="center">
+                        <a href="#" onclick="load_demo('idcard','demo1')">身份证识别</a>
+                    </li>
+
+                    <li class="list-group-item alert alert-primary" role="alert" align="center">
+                        <a href="#" onclick="load_demo('jsz','demo1')">驾驶证识别</a>
+                    </li>
+
+                    <li class="list-group-item alert alert-primary" role="alert" align="center">
+                        <a href="#" onclick="load_demo('xsz','demo1')">行驶本识别</a>
+                    </li>
+
+                    <li class="list-group-item alert alert-primary" role="alert" align="center">
+                        <a href="#" onclick="load_demo('vrc','demo1')">机动车登记证识别（绿本）</a>
+                    </li>
+
+                    <li class="list-group-item alert alert-primary" role="alert" align="center">
+                        <a href="#" onclick="load_demo('sali','demo1')">交强险保单识别</a>
+                    </li>
+
+                    <li class="list-group-item alert alert-primary" role="alert" align="center">
+                        <a href="#" onclick="load_demo('handwriting','demo1')">手写体识别</a>
+                    </li>
+
+                    <li class="list-group-item alert alert-primary" role="alert" align="center">
+                        <a href="#" onclick="load_demo('v_contract','demo1')">合同签名确认</a>
+                    </li>
+
+                    <li class="list-group-item alert alert-primary" role="alert" align="center">
+                        <a href="#" onclick="load_demo('plate_barcode','demo1')">二维码&车牌识别</a>
+                    </li>
+
+                    <li class="list-group-item alert alert-primary" role="alert" align="center">
+                        <a href="#" onclick="load_demo('license_validation','demo1')">驾照格式校验</a>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+</body>
+
+{% include 'includes/_footer.html' %}
+
+
+</html>

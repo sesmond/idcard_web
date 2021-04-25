@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>图像识别OCR</title>
+    <script type="text/javascript" src="/main/static/js/case_detail.js?v=1"></script>
+    <style type="text/css">
+        table.diff {
+            font-family: Courier;
+            border: medium;
+        }
+
+        .diff_header {
+            background-color: #e0e0e0
+        }
+
+        td.diff_header {
+            text-align: right
+        }
+
+        .diff_next {
+            background-color: #c0c0c0
+        }
+
+        .diff_add {
+            background-color: #aaffaa
+        }
+
+        .diff_chg {
+            background-color: #ffff77
+        }
+
+        .diff_sub {
+            background-color: #ffaaaa
+        }
+    </style>
+</head>
+
+<body>
+<div class="jumbotron masthead">
+    <div class="container">
+        <h3 class="title">用例测试详情</h3>
+        <span id="title_memo">用例测试-驾驶证</span>
+    </div>
+</div>
+
+<!--  表单区 -->
+<div class="container" align="center">
+    <input type="hidden" id="case_type"/>
+    <input type="button" class="btn btn-primary search-btn" value="返回"
+           id="back_btn"/>
+    <input type="button" class="btn btn-primary search-btn" value="开启筛选"
+           id="start_filter"/>
+    <!--  表单区 -->
+    <div style="display: none" class="card" id="detail_query_div" align="center">
+        <div class="card-body form-horizontal" align="left">
+            <form>
+                <div id="toolbar" class="cs-querylist">
+                </div>
+                <div class="tx-l pdt30">
+                    <input type="button" class="form-control btn btn-primary" value="筛选" id="submit_detail_query"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div align="center">
+    <div id="detail">
+
+    </div>
+</div>
+</body>
+
+</html>
