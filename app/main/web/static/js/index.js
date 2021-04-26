@@ -12,7 +12,7 @@ case_type_config = {
     "plate_barcode": "车牌条码",
     "crnn": "crnn识别",
     "vrc.crz": "绿本.车融租",
-    "vrc.34":"绿本.34页",
+    "vrc.34": "绿本.34页",
     "plate_ocr": "plate_ocr识别"
 }
 
@@ -225,12 +225,12 @@ let case_all_config = {
             "yitu": "宜图"
         }
     },
-     "plate_ocr": {
+    "plate_ocr": {
         "name": "plate_ocr",
         "name_ch": "plate_ocr识别",
         "data_list": {
-        "plate_ocr": "plate_ocr样本1-863",
-        "plate_ocr.2": "plate_ocr样本2-150"
+            "plate_ocr": "plate_ocr样本1-863",
+            "plate_ocr.2": "plate_ocr样本2-150"
         },
         "channel": {
             "yitu": "宜图",
@@ -403,7 +403,7 @@ function get_element_str(parent_id, element_config, image_arr, all_input_config)
         temp_str += '<input  class="form-control"  type="file" id="' + img_id + '" multiple="multiple" />'
         image_arr.push(element_name)
     } else if (element_config.type == 'input') {
-        temp_str += "<input  class='form-control'  type='text' name='" + element_name + "' value=''/>"
+        temp_str += "<input  class='form-control'  type='text' name='" + element_name + "' value='" + defaultValue + "'/>"
     }
     let show = true
     if (element_config.parent_node) {
@@ -472,7 +472,7 @@ function init_query_page(page_id, page_param) {
         var field_name_zh = value.name_zh
         var dd_id = field_name + "_dd_id"
         var div_id = field_name + "_div_id"
-
+        debugger
         var element_info = get_element_str(dd_id, value, image_arr, page_param.input);
         var style_str = ''
         if (!element_info[0]) {

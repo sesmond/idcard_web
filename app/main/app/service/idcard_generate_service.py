@@ -7,6 +7,7 @@ import cv2
 import numpy as np
 from PIL import ImageFont, ImageDraw
 
+from app.main.app.entity.idcard import IdCard
 from app.main.app.service import config_util
 from app.main.app.utils import image_util, config, text_util, vo_utils
 from app.main.app.vo.response.base_response import BaseResponse
@@ -242,8 +243,6 @@ def generate_batch(path, work_no, task_num, icon_list, bg_list):
     for i in range(0, task_num):
         print("生成第", work_no, "批，第", i, "张身份证")
         card = config_util.generateIdCard()
-        card.print()
-        card.avatar = image_util.get_random_icon(icon_list)
         bg_1, w1, h1 = image_util.create_backgroud_image(bg_list)
         bg_2, w2, h2 = image_util.create_backgroud_image(bg_list)
         img_name = str(work_no) + '_id_' + str(i).zfill(5)
@@ -252,25 +251,23 @@ def generate_batch(path, work_no, task_num, icon_list, bg_list):
         #     print("样本生成发生错误，忽略此错误，继续....",str(e))
 
 
-def generate_idcard():
+def generate_idcard_random():
     config_util.initArea()
-
     card = config_util.generateIdCard()
-    card.print()
-    icon_list = image_util.get_all_icons()
-    card.avatar = image_util.get_random_icon(icon_list)
+    resp = generate_idcard(card)
+    return resp
+
+
+def generate_idcard(card: IdCard):
     gen = IdCardGenerator()
     front, back = gen.generate(card)
-    images = []
     front = cv2.cvtColor(np.asarray(front), cv2.COLOR_RGBA2BGRA)
     back = cv2.cvtColor(np.asarray(back), cv2.COLOR_RGBA2BGRA)
-    images.append(front)
-    images.append(back)
+    images = [front, back]
     labels = ["正面", "反面"]
     show_info = vo_utils.generate_debug_two(None, images, labels)
     resp = BaseResponse()
     resp.show_info = show_info
-    # 生成身份证图片，根据一些信息因素
     return resp
 
 

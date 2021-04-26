@@ -3,11 +3,12 @@
 @Time : 2019/11/6 4:02 下午
 @File : config_util.py
 """
+import cv2
 import numpy as np
 from numpy import random
 
 from app.main.app.entity.idcard import IdCard
-from app.main.app.utils import config
+from app.main.app.utils import config, image_util, file_utils
 
 addr_list = []  # 地址
 
@@ -108,6 +109,9 @@ def generateIdCard():
     card.org = addr[2] + "公安局"
     # 有效期限
     card.validPeriod = getExpDate()
+    icon_list = file_utils.get_files("resource/icon")
+    img_p = random.choice(icon_list)
+    card.avatar = cv2.imread(img_p)
     return card
 
 

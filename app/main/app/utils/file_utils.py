@@ -12,7 +12,7 @@ import glob
 
 import logging
 
-from utils import date_utils
+from app.main.app.utils import date_utils
 
 logger = logging.getLogger(__name__)
 

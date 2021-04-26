@@ -43,6 +43,7 @@ page_param_json = {
         "title": "Demo结果查询",
         "url": "/case/demo/query.ajax",
         "input": [
+
             {
                 "name": "case_type",
                 "name_zh": "用例类型",
@@ -63,11 +64,78 @@ page_param_json = {
         "url": "/idcard/generate.ajax",
         "input": [
             {
+                "name": "img",
+                "name_zh": "头像",
+                "type": "image",
+            },
+            {
                 "name": "name",
                 "name_zh": "姓名",
                 "type": "input",
-            }
+            },
+            {
+                "name": "sex",
+                "name_zh": "性别",
+                "type": "select",
+                "value": {
+                    "男": "男",
+                    "女": "女"
+                },
+                "default": "男"
+            },
+            {
+                "name": "nation",
+                "name_zh": "民族",
+                "type": "input",
+                "default": "汉族"
+            },
+            {
+                "name": "year",
+                "name_zh": "出生年",
+                "type": "input",
+            },
+            {
+                "name": "month",
+                "name_zh": "出生月",
+                "type": "input",
+            },
+            {
+                "name": "day",
+                "name_zh": "出生日",
+                "type": "input",
+            },
+            {
+                "name": "addr",
+                "name_zh": "地址",
+                "type": "input",
+                "default": "北京八大胡同001号"
+            },
+            {
+                "name": "idNo",
+                "name_zh": "身份证号码",
+                "type": "input",
+                "default": "110010199101017234"
+            },
+            {
+                "name": "org",
+                "name_zh": "发证机关",
+                "type": "input",
+                "default": "北京公安局"
+            },
+            {
+                "name": "validPeriod",
+                "name_zh": "有效期限",
+                "type": "input",
+                "default": "2010.01.01-2020.01.01"
+            },
         ],
+        "output_type": "idcard",
+        "output": {}
+    },
+    "idcard.generate.random": {
+        "title": "身份证自动生成",
+        "url": "/idcard/generate/random.ajax",
+        "input": [],
         "output_type": "idcard",
         "output": {}
     },
@@ -77,6 +145,7 @@ page_param_json = {
 var g_page_type = "ocr"
 
 function init_page(page_type) {
+    debugger
     var page_param = page_param_json[page_type]
     init_query_page('toolbar', page_param)
     if (page_param.title) {

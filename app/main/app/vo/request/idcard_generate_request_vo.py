@@ -11,4 +11,13 @@ from app.main.app.vo.request.base_request_vo import ImageBaseRequest
 
 
 class IdcardGenerateRequest(ImageBaseRequest):
-    pass
+    name = ""
+    sex = ""
+    nation = ""
+    year = ""
+    month = ""
+    day = ""
+    addr = ""
+    idNo = ""
+    org = ""
+    validPeriod = ""
